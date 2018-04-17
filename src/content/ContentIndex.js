@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import ContentCreate from './ContentCreate';
 
 
 class Index extends Component {
@@ -15,7 +16,7 @@ class Index extends Component {
     }
 
     fetchContent = () => {
-        fetch("http://localhost:4000/api/user/content", {
+        fetch("http://localhost:4000/api/content", {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ class Index extends Component {
             <Container>
                 <Row>
                     <Col md="3">
-                        {/* the create component will go here*/}
+                        <ContentCreate token={this.props.token} updateContentArray={this.fetchContent} />
                     </Col>
                     <Col md="9">
                         <h2>This is where we are going to do something eventually</h2>

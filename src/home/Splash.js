@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Index from '../content/Index';
+import Index from '../content/ContentIndex';
 
 const Splash = (props) => {
     return(
