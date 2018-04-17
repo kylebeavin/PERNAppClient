@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import SiteBar from './home/Navbar';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      sessionToken: ''
+    }
+  }
+
+  componentWillMount() {
+    const token = localStorage.getItem('token');
+    if (token && !this.state.sessionToken) {
+      this.setState({ sessionToken: token});
+    }
+  }
+
+  setSessionState = (token) => {
+    localStorage.setItem('token', token);
+    this.setState({ sessionToken: token});
+  }
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <SiteBar />
       </div>
     );
   }
