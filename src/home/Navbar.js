@@ -1,23 +1,35 @@
 import React, { Component } from 'react'; 
-import {
-    Navbar,         //1
-    NavbarBrand,
-} from 'reactstrap';
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, Button} from 'reactstrap';
 
 class SiteBar extends Component {
-    constructor(props) {   //2
+    constructor(props) {  
         super(props);
-        this.state = {};
+        this.state = {
+            isOpen: false,
+        };
     }
 
-    //3
+    toggle = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
     render() {
         return (
             <div>
-                <Navbar color="faded"  light expand="md">
-                    <NavbarBrand href="/">My React App</NavbarBrand>
-                </Navbar>
-            </div>
+            <Navbar color="faded"  light expand="md">
+                <NavbarBrand href="/">My React App</NavbarBrand>
+                <NavbarToggler onClick={this.toggle} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <Button onClick={() => this.props.clickSignout()}>Sign out</Button>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+        </div>
         );
     }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SiteBar from './home/Navbar';
 import Auth from './auth/Auth';
+import Splash from './home/Splash';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -23,12 +24,37 @@ class App extends Component {
     this.setState({ sessionToken: token });
   }
 
+  signout = () => {
+    this.setState({
+      sessionToken: '',
+    });
+    localStorage.clear();
+  }
+
+  protectedViews = () => {
+    if (this.state.sessionToken === localStorage.getItem('token')) {
+      return (
+        <Switch>
+          <Route path='/' exact>
+            <Splash sessionToken={this.state.sessionToken} />
+          </Route>
+        </Switch>
+      );
+    } else {
+      return (
+        <Route path='/' exact>
+          <Auth setToken={this.setSessionState} />
+        </Route>
+      );
+    }
+  }
+
   render() {
     return (
       <Router>
         <div>
-          <SiteBar />
-          <Auth setToken={this.setSessionState}/>
+          <SiteBar clickSignout={this.signout}/>
+          {this.protectedViews()}
         </div>
       </Router>
     );
