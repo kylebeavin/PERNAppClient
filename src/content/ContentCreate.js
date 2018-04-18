@@ -5,7 +5,7 @@ class ContentCreate extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            subject:'',
+            subject: '',
             notes: '',
             reference: ''
         };
@@ -16,27 +16,27 @@ class ContentCreate extends Component {
             [event.target.name]: event.target.value
         })
     }
-    
+
     handleSubmit = (event) => {
         event.preventDefault();
         fetch("http://localhost:4000/api/content", {
             method: 'POST',
-            body: JSON.stringify({content: this.state}),
-            headers: new Headers ({
+            body: JSON.stringify({ content: this.state }),
+            headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
             })
         })
-        .then(res => res.json())
-        .then(data => {
-            this.props.updateContentArray();
-            this.setState({
-                subject: '',
-                notes: '',
-                reference: '',
+            .then(res => res.json())
+            .then(data => {
+                this.props.updateContentArray();
+                this.setState({
+                    subject: '',
+                    notes: '',
+                    reference: '',
+                })
             })
-        })
-    } 
+    }
 
     render() {
         return (

@@ -74,8 +74,8 @@ class Index extends Component {
                     }
                 </Col>
             </Container>
-                );
-            }
-        }
-        
+        );
+    }
+}
+
 export default Index;
