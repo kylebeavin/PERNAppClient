@@ -9,6 +9,7 @@ const ContentTable = (props) => {
             <Table striped>
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Subject</th>
                         <th>Notes</th>
                         <th>References</th>
@@ -16,13 +17,13 @@ const ContentTable = (props) => {
                 </thead>
                 <tbody>
                     {
-                        props.workouts.map((content, id) => {
+                        props.Contents.map((content, id) => {
                             return (
                                 <tr key={id}>
                                     <th scope="row">{content.id}</th>
                                     <td>{content.subject}</td>
                                     <td>{content.notes}</td>
-                                    <td>{content.references}</td>
+                                    <td>{content.reference}</td>
                                     <td>
                                         <Button id={content.id} onClick={props.delete} color="danger">Delete</Button>
                                         <Button id={content.id} onClick={e => props.update(e, content)} color="warning">Update</Button>

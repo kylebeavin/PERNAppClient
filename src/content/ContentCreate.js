@@ -46,7 +46,8 @@ class ContentCreate extends Component {
                 <Form onSubmit={this.handleSubmit} >
                     <FormGroup>
                         <Label for="subject">Subject</Label>
-                        <Input type="select" name="subject" value={this.state.subject} onChange={this.handleChange} placeholder="Type">
+                        <Input type="select" name="subject" value={this.state.subject} onChange={this.handleChange} placeholder="Type" required>
+                            <option value="">Pick one</option>
                             <option value="English">English</option>
                             <option value="History">History</option>
                             <option value="Math">Math</option>
@@ -56,11 +57,11 @@ class ContentCreate extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="notes">Notes</Label>
-                        <Input type="text" name="notes" value={this.state.notes} placeholder="enter some notes" onChange={this.handleChange} />
+                        <Input type="text" name="notes" value={this.state.notes} placeholder="enter some notes" onChange={this.handleChange} required/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="references">References</Label>
-                        <Input type="text" name="references" value={this.state.references} placeholder="add your links" onChange={this.handleChange} />
+                        <Label for="reference">Reference</Label>
+                        <Input type="text" name="reference" value={this.state.reference} placeholder="add your links" onChange={this.handleChange} required/>
                     </FormGroup>
                     <Button type="submit" color="primary"> Create </Button>
                 </Form>

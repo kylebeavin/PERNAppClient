@@ -15,7 +15,7 @@ class Index extends Component {
     }
 
     contentUpdate = (event, content) => {
-        fetch("http:localhost:4000/api/content", {
+        fetch(`http://localhost:4000/api/content/${event.target.id}`, {
             method: 'PUT',
             body: JSON.stringify({ content: content }),
             headers: new Headers({
@@ -23,19 +23,32 @@ class Index extends Component {
                 'Authorization': this.props.token
             })
         })
-            .then(res => {
-                this.setState({ updatePressed: false })
-                this.fetchContent();
-            })
+        .then(res => {
+            this.setState({ updatedPressed: false })
+            this.fetchContent();
+        })
     }
 
     setUpdatedContent = (event, content) => {
         this.setState({
             contentToUpdate: content,
-            updatePressed: true
+            updatedPressed: true
+            
         })
+        console.log(event.target.id)
     }
-
+    contentDelete = (event) => {
+        fetch(`http://localhost:4000/api/content/${event.target.id}`, {
+            method: 'DELETE',
+            body: JSON.stringify({ content: { id: event.target.id }}),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': this.props.token
+            })
+        })
+        .then(res => this.fetchContent())
+    }
+  
     componentDidMount() {
         this.fetchContent();
     }
@@ -67,6 +80,7 @@ class Index extends Component {
                         {Contents}
                     </Col>
                 </Row>
+
                 <Col md="12">
                     {
                         this.state.updatedPressed ? <ContentEdit t={this.state.updatedPressed} update={this.contentUpdate} content={this.state.contentToUpdate} />
