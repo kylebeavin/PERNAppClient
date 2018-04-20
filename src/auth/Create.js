@@ -8,39 +8,65 @@ class Create extends Component {
             firstname: '',
             lastname: '',
             email: '',
-            password: ''
+            password: '',
+            error: ''
         };
     }
-
+    
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
         });
     }
-
+    //set error state with ifs
     handleSubmit = (event) => {
-        fetch("http://localhost:4000/api/user", {
-            method: 'POST',
-            body: JSON.stringify({ user: this.state }),
-            headers: new Headers({
-                'Content-Type': 'application/json'
+        // const validEmail = event.target.email.value;
+        // if (validEmail.length <= 1) {
+        //     this.setState({
+        //         error: 'not a valid name'
+        //     })
+        // } else {
+            fetch("http://localhost:4000/api/user", {
+                method: 'POST',
+                body: JSON.stringify({ user: this.state }),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
             })
-        })
-        .then(response => response.json())
-        .then(data => {this.props.setToken(data.sessionToken)});
-        
-        event.preventDefault();
+            .then(response => response.json())
+            .then(data => {this.props.setToken(data.sessionToken)});
+        // }
+            event.preventDefault();
     }
+    validateUsername = e => {
+        document.getElementById('emailAlert').removeAttribute('hidden');
+        e.preventDefault();
+      }
+    
+      validatePassword = e => {
+        document.getElementById('passwordAlert').removeAttribute('hidden');
+        e.preventDefault();
+      }
+    
+      validateAll = e => {
+        document.getElementById('emailAlert').removeAttribute('hidden');
+        document.getElementById('passwordAlert').removeAttribute('hidden');
+        this.handleSubmit()
+        e.preventDefault();
+      }
 
     render() {
+        const validPass = (this.state.password.toLowerCase() !== this.state.password) && (this.state.password.length >= 6);
+        const submitHandler = (!this.state.email && !validPass) ? this.validateAll : !this.state.email ? this.validateUsername : !validPass ? this.validatePassword : this.handleSubmit;
+
         return (
             <div>
                 <h1>Create Account</h1>
                 <h6>Fill in your information.</h6>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={submitHandler}>
                     <FormGroup >
                         <Label for="firstname">First name</Label>
-                        <Input type="text" name="firstname" placeholder="Enter first name" onChange={this.handleChange} required/>
+                        <Input type="text" name="firstname" placeholder="Enter first name" onChange={this.handleChange} value={this.state.firstname} required/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="lastname">Last name</Label>
@@ -49,10 +75,12 @@ class Create extends Component {
                     <FormGroup>
                         <Label for="email">Email</Label>
                         <Input type="text" name="email" placeholder="Enter your email" onChange={this.handleChange} required/>
+                        <p id="emailAlert" hidden>Must be a valid email</p>
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">Password</Label>
                         <Input type="password" name="password" placeholder="enter password" onChange={this.handleChange} required/>
+                        <p id="passwordAlert" hidden>Must be at least six characters and contain at least one capital letter</p>
                     </FormGroup>
                     <Button type="submit"> Create </Button>
                 </Form>
