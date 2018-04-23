@@ -37,11 +37,12 @@ class App extends Component {
   
 
 
-  protectedViews = () => {
+  protectedViews = () => { 
+    console.log('hey')
     if (this.state.sessionToken === localStorage.getItem('token')) {
       return (
         <Switch>
-          <Route path='/' exact>
+          <Route path='/content' exact>
             <Splash sessionToken={this.state.sessionToken} />
           </Route>
         </Switch>
