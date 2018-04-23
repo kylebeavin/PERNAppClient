@@ -18,14 +18,9 @@ class Create extends Component {
             [event.target.name]: event.target.value,
         });
     }
-    //set error state with ifs
     handleSubmit = (event) => {
-        // const validEmail = event.target.email.value;
-        // if (validEmail.length <= 1) {
-        //     this.setState({
-        //         error: 'not a valid name'
-        //     })
-        // } else {
+        event.preventDefault();
+        
             fetch("http://localhost:4000/api/user", {
                 method: 'POST',
                 body: JSON.stringify({ user: this.state }),
@@ -35,8 +30,6 @@ class Create extends Component {
             })
             .then(response => response.json())
             .then(data => {this.props.setToken(data.sessionToken)});
-        // }
-            event.preventDefault();
     }
     validateUsername = e => {
         document.getElementById('emailAlert').removeAttribute('hidden');
