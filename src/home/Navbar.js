@@ -19,11 +19,12 @@ class SiteBar extends Component {
         return (
             <div>
             <Navbar color="faded"  light expand="md">
-                <NavbarBrand href="/">My React App</NavbarBrand>
+                <NavbarBrand href="/">My Notes App</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
+                            <Button onClick={() => this.props.clickDepot()}>Depot</Button>{' '}
                             <Button onClick={() => this.props.clickSignout()}>Sign out</Button>
                         </NavItem>
                     </Nav>

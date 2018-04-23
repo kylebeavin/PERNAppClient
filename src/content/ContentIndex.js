@@ -35,7 +35,6 @@ class Index extends Component {
             updatedPressed: true
             
         })
-        console.log(event.target.id)
     }
     contentDelete = (event) => {
         fetch(`http://localhost:4000/api/content/${event.target.id}`, {

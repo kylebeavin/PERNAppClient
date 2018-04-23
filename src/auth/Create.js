@@ -8,8 +8,7 @@ class Create extends Component {
             firstname: '',
             lastname: '',
             email: '',
-            password: '',
-            error: ''
+            password: ''
         };
     }
     

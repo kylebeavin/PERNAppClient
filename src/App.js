@@ -3,12 +3,14 @@ import SiteBar from './home/Navbar';
 import Auth from './auth/Auth';
 import Splash from './home/Splash';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Depot from './depot/DepotIndex';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      sessionToken: ''
+      sessionToken: '',
+      buttonPressed: false
     }
   }
 
@@ -25,11 +27,15 @@ class App extends Component {
   }
 
   signout = () => {
-    this.setState({
-      sessionToken: '',
-    });
+    this.setState({ sessionToken: '' })
     localStorage.clear();
   }
+
+  depot = () => { 
+      this.setState({ buttonPressed: true})
+    }
+  
+
 
   protectedViews = () => {
     if (this.state.sessionToken === localStorage.getItem('token')) {
@@ -53,8 +59,11 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <SiteBar clickSignout={this.signout}/>
-          {this.protectedViews()}
+          <SiteBar clickSignout={this.signout} clickDepot={this.depot} t={this.state.buttonPressed}/>
+          {
+            this.state.buttonPressed && this.state.sessionToken ? <Depot sessionToken={this.state.sessionToken}/> : this.protectedViews()
+          }
+          
         </div>
       </Router>
     );
