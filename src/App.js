@@ -3,7 +3,6 @@ import SiteBar from './home/Navbar';
 import Auth from './auth/Auth';
 import Splash from './home/Splash';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Depot from './depot/DepotIndex';
 
 class App extends Component {
   constructor() {
