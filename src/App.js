@@ -5,12 +5,12 @@ import Splash from './home/Splash';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Depot from './depot/DepotIndex';
 
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      sessionToken: '',
-      buttonPressed: false
+      sessionToken: ''
     }
   }
 
@@ -31,20 +31,16 @@ class App extends Component {
     localStorage.clear();
   }
 
-  depot = () => { 
-      this.setState({ buttonPressed: true})
-    }
-  
-
-
-  protectedViews = () => { 
-    console.log('hey')
+  protectedViews = () => {
     if (this.state.sessionToken === localStorage.getItem('token')) {
       return (
         <Switch>
-          <Route path='/content' exact>
+          <Route path='/' exact>
             <Splash sessionToken={this.state.sessionToken} />
           </Route>
+          <Route path='/depot' exact>
+             <Depot sessionToken={this.state.sessionToken}/>
+           </Route>
         </Switch>
       );
     } else {
@@ -60,11 +56,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <SiteBar clickSignout={this.signout} clickDepot={this.depot} t={this.state.buttonPressed}/>
-          {
-            this.state.buttonPressed && this.state.sessionToken ? <Depot sessionToken={this.state.sessionToken}/> : this.protectedViews()
-          }
-          
+          <SiteBar clickSignout={this.signout} />
+          {this.protectedViews()}
+
         </div>
       </Router>
     );

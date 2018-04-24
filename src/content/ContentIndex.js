@@ -72,15 +72,15 @@ class Index extends Component {
         return (
             <Container>
                 <Row>
-                    <Col md="3">
+                    <Col xs="3">
                         <ContentCreate token={this.props.token} updateContentArray={this.fetchContent} />
                     </Col>
-                    <Col md="9">
+                    <Col xs="9">
                         {Contents}
                     </Col>
                 </Row>
 
-                <Col md="12">
+                <Col xs="12">
                     {
                         this.state.updatedPressed ? <ContentEdit t={this.state.updatedPressed} update={this.contentUpdate} content={this.state.contentToUpdate} />
                             : <div></div>
