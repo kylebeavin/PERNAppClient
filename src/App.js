@@ -10,7 +10,6 @@ class App extends Component {
     super();
     this.state = {
       sessionToken: '',
-      buttonPressed: false
     }
   }
 
@@ -31,9 +30,7 @@ class App extends Component {
     localStorage.clear();
   }
 
-  depot = () => { 
-      this.setState({ buttonPressed: true})
-    }
+ 
   
 
 
@@ -60,10 +57,7 @@ class App extends Component {
       <Router>
         <div>
           <SiteBar clickSignout={this.signout} clickDepot={this.depot} t={this.state.buttonPressed}/>
-          {
-            this.state.buttonPressed && this.state.sessionToken ? <Depot sessionToken={this.state.sessionToken}/> : this.protectedViews()
-          }
-          
+          {this.protectedViews()}
         </div>
       </Router>
     );

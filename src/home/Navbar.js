@@ -24,7 +24,6 @@ class SiteBar extends Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <Button onClick={() => this.props.clickDepot()}>Depot</Button>{' '}
                             <Button onClick={() => this.props.clickSignout()}>Sign out</Button>
                         </NavItem>
                     </Nav>
