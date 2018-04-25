@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Card, Button, CardTitle, CardText, Row } from 'reactstrap';
 
 const DepotTable = (props) => {
-    console.log(props)
     return (
         <div>
             {
