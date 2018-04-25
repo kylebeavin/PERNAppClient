@@ -9,7 +9,7 @@ const DepotTable = (props) => {
                     return (
                             <Card className="personCard" key={id} body inverse color="primary">
                                 <CardTitle>{user.firstname}{" "}{user.lastname}</CardTitle>
-                                <CardText>sdffsdafadf</CardText>
+                                <CardText>Email:{user.email}</CardText>
                                 <Button color="secondary" outline color="warning" size="lg" style={{ fontWeight: "bold", color: "white" }}>Button</Button>
                             </Card>
                     )
