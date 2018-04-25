@@ -1,6 +1,7 @@
 import React from 'react';
 
 const DepotTable = (props) => {
+    console.log(props)
     return (
         <div>
           {

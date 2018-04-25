@@ -23,8 +23,9 @@ class Depot extends Component {
             })
         })
         .then(res => res.json())
-        .then(displayData => {
-            return this.setState({ user: displayData})
+        .then(display => {
+            console.log(display)
+            return this.setState({ display: display})
         });
     }
 
@@ -32,7 +33,7 @@ class Depot extends Component {
         return(
             <Container>
                 <Row>
-                    <Col xs="4"><DepotTable display={this.state.displayData}/></Col>
+                    <Col xs="4"><DepotTable display={this.state.display}/></Col>
                     <Col xs="4"></Col>
                     <Col xs="4"></Col>
                 </Row>
