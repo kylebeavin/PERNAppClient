@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, Button} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 class SiteBar extends Component {
     constructor(props) {  
@@ -24,6 +25,8 @@ class SiteBar extends Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
+                            <Link to='/'><Button >Content</Button>{' '}</Link>
+                            <Link to='/depot'><Button >Depot</Button>{' '}</Link>
                             <Button onClick={() => this.props.clickSignout()}>Sign out</Button>
                         </NavItem>
                     </Nav>

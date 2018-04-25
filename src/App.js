@@ -4,11 +4,12 @@ import Auth from './auth/Auth';
 import Splash from './home/Splash';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      sessionToken: '',
+      sessionToken: ''
     }
   }
 
@@ -29,10 +30,6 @@ class App extends Component {
     localStorage.clear();
   }
 
- 
-  
-
-
   protectedViews = () => {
     if (this.state.sessionToken === localStorage.getItem('token')) {
       return (
@@ -40,6 +37,9 @@ class App extends Component {
           <Route path='/' exact>
             <Splash sessionToken={this.state.sessionToken} />
           </Route>
+          <Route path='/depot' exact>
+             <Depot sessionToken={this.state.sessionToken}/>
+           </Route>
         </Switch>
       );
     } else {
@@ -55,8 +55,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <SiteBar clickSignout={this.signout} clickDepot={this.depot} t={this.state.buttonPressed}/>
+          <SiteBar clickSignout={this.signout} />
           {this.protectedViews()}
+
         </div>
       </Router>
     );
