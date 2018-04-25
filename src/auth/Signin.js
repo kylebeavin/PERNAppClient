@@ -17,7 +17,7 @@ class Signin extends Component {
     }
 
     handleSubmit = (event) => {
-        fetch("http://localhost:4000/api/user/signin", {
+        fetch("https://kb-notesapp.herokuapp.com/api/user/signin", {
             method: 'POST',
             body: JSON.stringify({user:this.state}),
             headers: new Headers({
@@ -44,7 +44,7 @@ class Signin extends Component {
                         <Label for="password">Password</Label>
                         <Input type="password" name="password" placeholder="enter password" onChange={this.handleChange}/>
                     </FormGroup>
-                    <Button type="submit"> Sign in</Button>
+                    <Button type="submit" outline color="warning" size="lg" style={{fontWeight: "bold"}}> Sign in</Button>
                 </Form>
             </div>
         )

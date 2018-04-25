@@ -6,7 +6,7 @@ const ContentTable = (props) => {
         <div>
             <h3>Check out your notes</h3>
             <hr />
-            <Table striped>
+            <Table responsive striped >
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -15,7 +15,7 @@ const ContentTable = (props) => {
                         <th>References</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="tbody">
                     {
                         props.Contents.map((content, id) => {
                             return (
@@ -25,8 +25,8 @@ const ContentTable = (props) => {
                                     <td>{content.notes}</td>
                                     <td>{content.reference}</td>
                                     <td>
-                                        <Button id={content.id} onClick={props.delete} color="danger">Delete</Button>
-                                        <Button id={content.id} onClick={e => props.update(e, content)} color="warning">Update</Button>
+                                        <Button id={content.id} onClick={props.delete} outline color="warning" size="lg" style={{fontWeight: "bold"}}>Delete</Button>
+                                        <Button id={content.id} onClick={e => props.update(e, content)} outline color="warning" size="lg" style={{fontWeight: "bold"}}>Update</Button>
                                     </td>
                                 </tr>
                             )

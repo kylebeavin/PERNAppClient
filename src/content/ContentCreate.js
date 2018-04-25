@@ -19,7 +19,7 @@ class ContentCreate extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:4000/api/content", {
+        fetch("https://kb-notesapp.herokuapp.com/api/content", {
             method: 'POST',
             body: JSON.stringify({ content: this.state }),
             headers: new Headers({
@@ -63,7 +63,7 @@ class ContentCreate extends Component {
                         <Label for="reference">Reference</Label>
                         <Input type="text" name="reference" value={this.state.reference} placeholder="add your links" onChange={this.handleChange} required/>
                     </FormGroup>
-                    <Button type="submit" color="primary"> Create </Button>
+                    <Button type="submit" outline color="warning" size="lg" style={{fontWeight: "bold"}}> Create </Button>
                 </Form>
             </div>
         )

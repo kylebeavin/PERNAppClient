@@ -20,7 +20,7 @@ class Create extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         
-            fetch("http://localhost:4000/api/user", {
+            fetch("https://kb-notesapp.herokuapp.com/api/user", {
                 method: 'POST',
                 body: JSON.stringify({ user: this.state }),
                 headers: new Headers({
@@ -74,7 +74,7 @@ class Create extends Component {
                         <Input type="password" name="password" placeholder="enter password" onChange={this.handleChange} required/>
                         <p id="passwordAlert" hidden>Must be at least six characters and contain at least one capital letter</p>
                     </FormGroup>
-                    <Button type="submit"> Create </Button>
+                    <Button type="submit"outline color="warning" size="lg" style={{fontWeight: "bold"}}> Create </Button>
                 </Form>
             </div>
         )

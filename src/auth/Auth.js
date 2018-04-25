@@ -8,10 +8,10 @@ const Auth = (props) => {
         <Container>
             <Row>
                 <Col md='6'>
-                    <Signin setToken={props.setToken}/>
+                    <Create setToken={props.setToken}/>   
                 </Col>
                 <Col md='6'>
-                    <Create setToken={props.setToken}/>   
+                    <Signin setToken={props.setToken}/>
                 </Col>
             </Row>
         </Container>

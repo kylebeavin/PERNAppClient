@@ -15,7 +15,7 @@ class Depot extends Component {
     }
 
     fetchDisplay = () => {
-        fetch("http://localhost:4000/api/user", {
+        fetch("https://kb-notesapp.herokuapp.com/api/user", {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -24,29 +24,14 @@ class Depot extends Component {
         })
         .then(res => res.json())
         .then(display => {
-            console.log(display)
             return this.setState({ display: display})
         });
     }
 
     render() {
         return(
-            <Container>
-                <Row>
-                    <Col xs="4"><DepotTable display={this.state.display}/></Col>
-                    <Col xs="4"></Col>
-                    <Col xs="4"></Col>
-                </Row>
-                <Row>
-                    <Col xs="4"></Col>
-                    <Col xs="4"></Col>
-                    <Col xs="4"></Col>
-                </Row>
-                <Row>
-                    <Col xs="4"></Col>
-                    <Col xs="4"></Col>
-                    <Col xs="4"></Col>
-                </Row>                
+            <Container className="userContainer">
+                    <DepotTable display={this.state.display}/>
             </Container>
         )
     }

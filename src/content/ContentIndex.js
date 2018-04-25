@@ -15,7 +15,7 @@ class Index extends Component {
     }
 
     contentUpdate = (event, content) => {
-        fetch(`http://localhost:4000/api/content/${event.target.id}`, {
+        fetch(`https://kb-notesapp.herokuapp.com/api/content/${event.target.id}`, {
             method: 'PUT',
             body: JSON.stringify({ content: content }),
             headers: new Headers({
@@ -37,7 +37,7 @@ class Index extends Component {
         })
     }
     contentDelete = (event) => {
-        fetch(`http://localhost:4000/api/content/${event.target.id}`, {
+        fetch(`https://kb-notesapp.herokuapp.com/api/content/${event.target.id}`, {
             method: 'DELETE',
             body: JSON.stringify({ content: { id: event.target.id }}),
             headers: new Headers({
@@ -53,7 +53,7 @@ class Index extends Component {
     }
 
     fetchContent = () => {
-        fetch("http://localhost:4000/api/content", {
+        fetch("https://kb-notesapp.herokuapp.com/api/content", {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -72,10 +72,10 @@ class Index extends Component {
         return (
             <Container>
                 <Row>
-                    <Col xs="3">
+                    <Col xs="12" md="3">
                         <ContentCreate token={this.props.token} updateContentArray={this.fetchContent} />
                     </Col>
-                    <Col xs="9">
+                    <Col md="9" xs="12">
                         {Contents}
                     </Col>
                 </Row>

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import SiteBar from './home/Navbar';
+import Footer from './home/Footer'
 import Auth from './auth/Auth';
 import Splash from './home/Splash';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import Depot from './depot/DepotIndex';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -53,13 +55,15 @@ class App extends Component {
 
   render() {
     return (
+      <div>
       <Router>
         <div>
           <SiteBar clickSignout={this.signout} />
           {this.protectedViews()}
-
         </div>
       </Router>
+      <Footer />
+      </div>
     );
   }
 }

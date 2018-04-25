@@ -36,8 +36,8 @@ class ContentEdit extends Component {
         return (
             <div>
                 <Modal isOpen={true} >
-                    <ModalHeader >Update your notes</ModalHeader>
-                    <ModalBody>
+                    <ModalHeader style={{backgroundColor:"#2a8dfc",color:"white",fontWeight:"bold"}}>Update your notes</ModalHeader>
+                    <ModalBody style={{backgroundColor:"#ffffd8"}}>
                         <Form onSubmit={this.handleSubmit} id={this.state.id}>
                             <FormGroup>
                                 <Label for="subject">Subject</Label>
@@ -58,7 +58,7 @@ class ContentEdit extends Component {
                                 <Label for="reference">Reference</Label>
                                 <Input type="text" name="reference" value={this.state.reference} placeholder="add your links" onChange={this.handleChange} required/>
                             </FormGroup>
-                            <Button type="submit" color="primary"> Submit </Button>
+                            <Button type="submit" outline color="warning" size="lg" style={{fontWeight: "bold"}}> Submit </Button>
                         </Form>
                     </ModalBody>
 
