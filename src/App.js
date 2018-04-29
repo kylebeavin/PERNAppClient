@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SiteBar from './home/Navbar';
-import Footer from './home/Footer'
+import Footer from './home/Footer';
 import Auth from './auth/Auth';
 import Splash from './home/Splash';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -40,8 +40,8 @@ class App extends Component {
             <Splash sessionToken={this.state.sessionToken} />
           </Route>
           <Route path='/depot' exact>
-             <Depot sessionToken={this.state.sessionToken}/>
-           </Route>
+            <Depot sessionToken={this.state.sessionToken} />
+          </Route>
         </Switch>
       );
     } else {
@@ -56,14 +56,15 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Router>
-        <div>
-          <SiteBar clickSignout={this.signout} />
-          {this.protectedViews()}
-        </div>
-      </Router>
-      <Footer />
+        <Router>
+          <div>
+            <SiteBar clickSignout={this.signout} />
+            {this.protectedViews()}
+          </div>
+        </Router>
+        <Footer />
       </div>
+
     );
   }
 }
