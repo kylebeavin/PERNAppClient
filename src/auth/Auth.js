@@ -5,7 +5,7 @@ import Signin from './Signin';
 
 const Auth = (props) => {
     return (
-        <Container>
+        <Container className="AuthContainer">
             <Row>
                 <Col md='6'>
                     <Create setToken={props.setToken}/>   

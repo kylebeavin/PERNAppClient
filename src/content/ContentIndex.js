@@ -70,7 +70,7 @@ class Index extends Component {
         const Contents = this.state.content.length >= 1 ? <ContentTable Contents={this.state.content}
             delete={this.contentDelete} update={this.setUpdatedContent} /> : <h2>Create some Notes</h2>
         return (
-            <Container>
+            <Container className="ContentContainer">
                 <Row>
                     <Col xs="12" md="3">
                         <ContentCreate token={this.props.token} updateContentArray={this.fetchContent} />

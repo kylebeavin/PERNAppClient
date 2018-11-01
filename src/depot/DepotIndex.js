@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import DepotTable from './DepotTable';
 
 class Depot extends Component {
@@ -30,9 +30,9 @@ class Depot extends Component {
 
     render() {
         return(
-            <Container className="userContainer">
+            <div className="DepotContainer">
                     <DepotTable display={this.state.display}/>
-            </Container>
+            </div>
         )
     }
 }

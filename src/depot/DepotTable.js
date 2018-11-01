@@ -1,9 +1,9 @@
 import React from 'react';
-import { Col, Card, Button, CardTitle, CardText, Row } from 'reactstrap';
+import { Card, Button, CardTitle, CardText } from 'reactstrap';
 
 const DepotTable = (props) => {
     return (
-        <div>
+        <div className="DepotTable">
             {
                 props.display.map((user, id) => {
                     return (
